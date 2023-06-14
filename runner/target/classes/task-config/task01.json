@@ -1,0 +1,16 @@
+{
+  "name": "test",
+  "desc": "test",
+  "steps": [
+    {
+      "type": "fileReader",
+      "name": "FileReaderProccesser",
+      "desc": "FileReaderProccesser"
+    },
+    {
+      "type": "inside",
+      "name": "InsideProccesser",
+      "desc": "InsideProccesser"
+    }
+  ]
+}
