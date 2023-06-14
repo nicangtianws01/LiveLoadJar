@@ -1,5 +1,0 @@
-org\example\runner\file\FileReaderDef.class
-org\example\controller\PluginController.class
-org\example\runner\file\FileReaderProccesser.class
-org\example\util\ClassLoaderUtil.class
-org\example\RunnerStarter.class
