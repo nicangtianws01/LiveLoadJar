@@ -1,7 +1,6 @@
 package org.example.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -12,11 +11,11 @@ import java.net.URLClassLoader;
  * @author nicangtianws01
  * @since 0.1
  */
+@Slf4j
 public final class ClassLoaderUtil {
 
     private ClassLoaderUtil(){}
 
-    private static final Logger logger = LoggerFactory.getLogger(ClassLoaderUtil.class);
     public static ClassLoader getClassLoader(URL url) {
         try {
             Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
@@ -27,7 +26,7 @@ public final class ClassLoaderUtil {
             method.invoke(classLoader, url);
             return classLoader;
         } catch (Exception e) {
-            logger.error("Get ClassLoader error: ", e);
+            log.error("Get ClassLoader error: ", e);
             return null;
         }
     }

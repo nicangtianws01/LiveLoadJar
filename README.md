@@ -11,7 +11,10 @@ java --add-opens=java.base/java.net=ALL-UNNAMED -jar runner-1.0-SNAPSHOT.jar --s
 ```
 
 ## 代办
-- 变量替换
+- 任务调度
+- 任务管理
+- 配置管理
+- 变量管理
   - [x] 任务变量 
   - [ ] 全局变量 
 - 前端图形化（react）
