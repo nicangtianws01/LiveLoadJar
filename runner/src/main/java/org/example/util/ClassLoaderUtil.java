@@ -7,6 +7,11 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
+/**
+ * 获取classLoader
+ * @author nicangtianws01
+ * @since 0.1
+ */
 public final class ClassLoaderUtil {
 
     private ClassLoaderUtil(){}

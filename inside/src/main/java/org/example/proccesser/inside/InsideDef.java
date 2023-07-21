@@ -1,8 +1,8 @@
 package org.example.proccesser.inside;
 
-import org.example.common.ProccesserDef;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.common.ProccesserDef;
 import org.example.common.anno.JsonTypeDef;
 
 @Getter

@@ -10,13 +10,16 @@ import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-
+/**
+ * 类文件读取
+ * @since 0.1
+ * @author nicangtianws01
+ */
 public final class ClassUtil {
 
     private ClassUtil(){}
 
     private static final Logger log = LoggerFactory.getLogger(ClassUtil.class);
-
     private static final String DOT_CLASS = ".class";
     private static final int DOT_CLASS_LEN = DOT_CLASS.length();
 
@@ -28,14 +31,11 @@ public final class ClassUtil {
      * @param contain 类路径中含有的字符串，比如 .function.
      * @param notContain 类路径中不含有的字符串 .gui.
      * @return List<String>
-     * @throws IOException
      */
     public static List<String> getClassList(File jarFile, Class<?>[] parents, boolean inner, String contain, String notContain) throws IOException {
         Set<String> listClasses = new TreeSet<>();
 
-        ZipFile zipFile = null;
-        try {
-            zipFile = new ZipFile(jarFile);
+        try (ZipFile zipFile = new ZipFile(jarFile)) {
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             while (entries.hasMoreElements()) {
                 String strEntry = entries.nextElement().toString();
@@ -46,49 +46,69 @@ public final class ClassUtil {
                     }
                 }
             }
-        } catch (IOException e) {
-            throw e;
-        } finally {
-            if (zipFile != null) {
-                try {
-                    zipFile.close();
-                } catch (Exception e) {
-                }
-            }
         }
 
         return new ArrayList<>(listClasses);
     }
 
+    /**
+     * 读取所有类
+     * @param jarFile
+     * @return
+     * @throws IOException
+     */
     public static List<String> getClassListSimple(File jarFile) throws IOException {
         return getClassList(jarFile, new Class[]{}, false, null, null);
     }
 
+    /**
+     * 转换类名
+     * @param strClassName
+     * @return
+     */
     public static String fixClassName(String strClassName) {
         strClassName = strClassName.replace('\\', '.');
         strClassName = strClassName.replace('/', '.');
-        // remove ".class"
+        // 移除 ".class" 后缀
         strClassName = strClassName.substring(0, strClassName.length() - DOT_CLASS_LEN);
         return strClassName;
     }
 
+    /**
+     * 类过滤
+     * @param parents
+     * @param className
+     * @param contains
+     * @param notContains
+     * @param inner
+     * @return
+     */
     public static boolean accept(Class<?>[] parents, String className, String contains, String notContains,
                                  boolean inner) {
-
+        // 不包含必要的字符
         if (contains != null && !className.contains(contains)) {
-            return false; // It does not contain a required string
+            return false;
         }
+        // 包含不必要的字符
         if (notContains != null && className.contains(notContains)) {
-            return false; // It contains a banned string
+            return false;
         }
-        if (!className.contains("$") || inner) { // $NON-NLS-1$
+        // $NON-NLS-1$
+        if (!className.contains("$") || inner) {
             return parents.length == 0 || isChildOf(parents, className, Thread.currentThread().getContextClassLoader());
         }
         return false;
     }
 
+    /**
+     * 判断是否为指定类的子类
+     * @param parentClasses
+     * @param strClassName
+     * @param contextClassLoader
+     * @return
+     */
     public static boolean isChildOf(Class<?>[] parentClasses, String strClassName, ClassLoader contextClassLoader) {
-        // might throw an exception, assume this is ignorable
+        // 可能会抛出异常，暂时忽略
         try {
             Class<?> c = Class.forName(strClassName, false, contextClassLoader);
 

@@ -1,12 +1,17 @@
 {
   "name": "test",
   "desc": "test",
+  "vars": {
+
+  },
   "steps": [
     {
+      "type": "fileReader",
       "name": "FileReaderProccesser",
       "desc": "FileReaderProccesser"
     },
     {
+      "type": "inside",
       "name": "InsideProccesser",
       "desc": "InsideProccesser"
     }

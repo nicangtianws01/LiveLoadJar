@@ -1,1 +1,1 @@
-insert into plugin_info(name, path) values ('Inside','C:/Users/nicangtianws/data/test/inside-1.0-SNAPSHOT.jar');
+insert into plugin_info(name, path) values ('Inside','E:/data/liveload-test/inside-1.0-SNAPSHOT.jar');

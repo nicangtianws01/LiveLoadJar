@@ -1,23 +1,8 @@
-server:
-  port: 8080
-
 spring:
-  datasource:
-    url: jdbc:h2:mem:testdb;MODE=MYSQL
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: test#123
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    defer-datasource-initialization: true
-  #    properties:
-#      hibernate:
-#        hbm2ddl:
-#          auto: update
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-      settings:
-        trace: false
-        web-allow-others: false
+  profiles:
+    default: dev
+
+org:
+  example:
+    jar: "E:/data/liveload-test/"
+    package: org.example.proccesser
