@@ -2,13 +2,14 @@
   "name": "test",
   "desc": "test",
   "vars": {
-
+    "globalName": "global.txt"
   },
   "steps": [
     {
       "type": "fileReader",
       "name": "FileReaderProccesser",
-      "desc": "FileReaderProccesser"
+      "desc": "FileReaderProccesser",
+      "fileName": "${#globalName}"
     },
     {
       "type": "inside",

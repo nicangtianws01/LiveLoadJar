@@ -17,7 +17,4 @@ public class TaskDef {
     private String desc;
     private Map<String, String> vars;
     private List<ProccesserDef> steps;
-
-
-
 }
