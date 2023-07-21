@@ -20,7 +20,7 @@ public final class ClassLoaderUtil {
     public static ClassLoader getClassLoader(URL url) {
         try {
             Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
-            URLClassLoader classLoader = new URLClassLoader(new URL[]{}, ClassLoader.getSystemClassLoader());
+            URLClassLoader classLoader = new URLClassLoader(new URL[]{}, Thread.currentThread().getContextClassLoader());
             if (!method.canAccess(classLoader)) {
                 method.setAccessible(true);
             }
