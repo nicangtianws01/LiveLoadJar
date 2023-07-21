@@ -12,10 +12,10 @@ java --add-opens=java.base/java.net=ALL-UNNAMED -jar runner-1.0-SNAPSHOT.jar --s
 
 ## 代办
 - 变量替换
-  - 任务变量 [x]
-  - 全局变量 []
+  - [x] 任务变量 
+  - [ ] 全局变量 
 - 前端图形化（react）
-  - 操作任务启停
-  - 查看任务状态和日志
-  - 图形化编辑任务流
+  - [ ] 操作任务启停 
+  - [ ] 查看任务状态和日志 
+  - [ ] 图形化编辑任务流 
 
