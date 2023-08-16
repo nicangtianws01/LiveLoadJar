@@ -2,21 +2,16 @@ server:
   port: 8080
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb;MODE=MYSQL
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: test#123
+    url: jdbc:mariadb://192.168.93.128:3306/liveload?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: mari33#06adb
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.MariaDBDialect
     defer-datasource-initialization: true
     #    properties:
   #      hibernate:
   #        hbm2ddl:
   #          auto: update
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-      settings:
-        trace: false
-        web-allow-others: false
+
+

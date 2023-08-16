@@ -8,6 +8,9 @@ import lombok.Setter;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 任务流定义
+ */
 @Getter
 @Setter
 @NoArgsConstructor

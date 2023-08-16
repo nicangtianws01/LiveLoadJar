@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.proccesser.empty.EmptyDef;
 
+/**
+ * 定义事件处理器的参数
+ * 每个处理器的参数定义类都需要继承该类
+ */
 @Getter
 @Setter
 @AllArgsConstructor
