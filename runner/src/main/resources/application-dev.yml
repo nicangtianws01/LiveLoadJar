@@ -1,6 +1,8 @@
 server:
   port: 8080
 spring:
+  application:
+    name: liveloadjar
   datasource:
     url: jdbc:mariadb://192.168.93.128:3306/liveload?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
     driver-class-name: org.mariadb.jdbc.Driver
@@ -13,5 +15,21 @@ spring:
   #      hibernate:
   #        hbm2ddl:
   #          auto: update
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  devtools:
+    livereload:
+      enabled: true
+
+org:
+  example:
+    jar-dir-tmp: "E:/data/liveload-test/tmp"
+    jar-dir: "E:/data/liveload-test"
+    package: org.example.proccesser
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
 
 

@@ -2,27 +2,14 @@ package org.example;
 
 import org.example.cache.ProccesserCache;
 import org.example.common.Proccesser;
-import org.example.entity.PluginInfo;
-import org.example.repository.PluginRepository;
 import org.example.service.PluginService;
-import org.example.util.ClassLoaderUtil;
-import org.example.util.ClassUtil;
-import org.example.util.SpringBeanRegister;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @SpringBootApplication

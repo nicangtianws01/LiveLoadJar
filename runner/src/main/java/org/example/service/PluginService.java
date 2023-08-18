@@ -36,6 +36,13 @@ public class PluginService {
         this.repository = repository;
     }
 
+    public void pushPlugin(String name, String path){
+        PluginInfo pluginInfo = new PluginInfo();
+        pluginInfo.setName(name);
+        pluginInfo.setPath(path);
+        repository.save(pluginInfo);
+    }
+
     public void loadAllPlugins() {
         logger.info("Load plugins...");
         // 加载所有插件
@@ -53,8 +60,8 @@ public class PluginService {
             logger.info("Plugin {} loading...", pluginInfo.getName());
             // 插件全路径
             String jarPath = pluginInfo.getPath();
+            File file = new File(jarPath);
             try {
-                File file = new File(jarPath);
                 // 扫描得到插件所有的class文件
                 List<String> list = ClassUtil.getClassListSimple(file);
                 ClassLoader classLoader = ClassLoaderUtil.getClassLoader(file.toURI().toURL());
