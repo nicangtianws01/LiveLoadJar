@@ -1,6 +1,6 @@
-package org.example.repository;
+package org.example.repository.plugin;
 
-import org.example.entity.PluginInfo;
+import org.example.entity.plugin.PluginInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

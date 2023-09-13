@@ -28,7 +28,7 @@ import java.nio.charset.StandardCharsets;
 @Tag(name = "插件管理接口")
 @Slf4j
 @RestController
-@RequestMapping("/v1/plugin")
+@RequestMapping("/api/v1/plugin")
 public class PluginController {
 
     private final SpringBeanRegister register;

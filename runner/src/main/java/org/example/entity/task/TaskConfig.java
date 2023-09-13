@@ -1,4 +1,4 @@
-package org.example.entity;
+package org.example.entity.task;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -7,15 +7,15 @@ import lombok.Setter;
 import java.io.Serializable;
 
 /**
- * 包含已保存的插件的信息
+ * 已保存的任务流的信息
  * @author sena
  * @since v1.0
  */
 @Getter
 @Setter
 @Entity
-@Table(name = "plugin_info")
-public class PluginInfo implements Serializable {
+@Table(name = "task_config")
+public class TaskConfig implements Serializable {
     /**
      * id
      */
@@ -23,13 +23,18 @@ public class PluginInfo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     /**
-     * 插件名称
+     * 任务名称
      */
     @Column
     private String name;
     /**
-     * 插件保存全路径
+     * 任务组
      */
     @Column
-    private String path;
+    private String group;
+    /**
+     * 任务配置
+     */
+    @Column
+    private String config;
 }
