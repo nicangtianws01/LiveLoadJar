@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.proccesser.empty.EmptyDef;
 
 /**
  * 定义事件处理器的参数
@@ -15,9 +14,8 @@ import org.example.proccesser.empty.EmptyDef;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type",
-        defaultImpl = EmptyDef.class, visible = true)
-public class ProccesserDef {
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type", visible = true)
+public class ProccessorDef {
     protected String type;
     protected String name;
     protected String desc;

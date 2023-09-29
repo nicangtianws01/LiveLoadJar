@@ -40,7 +40,7 @@ public class SchedulerServiceImpl implements SchedulerService {
                 .withIdentity(name, group)
                 .build();
 
-        // SimpleScheduleBuilder  CronScheduleBuilder  用于构建Scheduler，定义任务调度的时间规则
+        // CronScheduleBuilder 用于构建Scheduler，定义任务调度的时间规则
         CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(cron);
         // 触发器
         CronTrigger cronTrigger = TriggerBuilder.newTrigger().withIdentity(name, group)

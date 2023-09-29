@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Modifier;
 import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -49,6 +51,28 @@ public final class ClassUtil {
         }
 
         return new ArrayList<>(listClasses);
+    }
+
+    public static List<String> getClassList(String jarPath, Class<?>[] parents, boolean inner, String contain, String notContain) throws IOException {
+        Set<String> listClasses = new TreeSet<>();
+
+        try (JarFile jarFile = new JarFile(jarPath)) {
+            Enumeration<? extends JarEntry> entries = jarFile.entries();
+            while (entries.hasMoreElements()) {
+                String strEntry = entries.nextElement().toString();
+                if (strEntry.endsWith(DOT_CLASS)) {
+                    String fixedClassName = fixClassName(strEntry);
+                    if (accept(parents, fixedClassName, contain, notContain, inner)) {
+                        listClasses.add(fixedClassName);
+                    }
+                }
+            }
+        }
+
+        return new ArrayList<>(listClasses);
+    }
+    public static List<String> getClassListSimple(String jarPath) throws IOException {
+        return getClassList(jarPath, new Class[]{}, false, null, null);
     }
 
     /**

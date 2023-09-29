@@ -30,8 +30,11 @@ spring:
 
 org:
   example:
-    jar-dir-tmp: "E:/data/liveload-test/tmp"
-    jar-dir: "E:/data/liveload-test"
+    plugin:
+      path:
+        tmp: "E:/data/liveload-test/tmp"
+        target: "E:/data/liveload-test"
+        deleted: "E:/data/liveload-test/deleted"
     package: org.example.proccesser
 springdoc:
   swagger-ui:

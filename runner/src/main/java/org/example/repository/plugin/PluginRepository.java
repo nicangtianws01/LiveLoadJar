@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PluginRepository extends JpaRepository<PluginInfo, Long> {
-
+    PluginInfo findByName(String name);
 }

@@ -19,5 +19,5 @@ public class TaskDef {
     private String name;
     private String desc;
     private Map<String, String> vars;
-    private List<ProccesserDef> steps;
+    private List<ProccessorDef> steps;
 }
