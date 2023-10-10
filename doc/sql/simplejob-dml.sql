@@ -1,0 +1,2 @@
+-- task_config
+insert into task_config(`name`, `group`, config) VALUES('test1', 'test', '{   "name": "test",   "desc": "test",   "vars": {     "globalName": "global.txt"   },   "steps": [     {       "type": "fileReader",       "name": "FileReaderProccesser",       "desc": "FileReaderProccesser",       "fileName": "${#globalName}"     },     {       "type": "inside",       "name": "InsideProccesser",       "desc": "InsideProccesser"     },     {       "type": "abc",       "name": "abc",       "desc": "abc", "param1": "test"     }   ] }');
