@@ -2,10 +2,10 @@ server:
   port: 8080
 spring:
   application:
-    name: liveloadjar
+    name: simpleJob
   datasource:
     primary:
-      jdbc-url: jdbc:mariadb://192.168.93.128:3306/liveload?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+      jdbc-url: jdbc:mariadb://192.168.93.128:3306/simpleJob?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
       driver-class-name: org.mariadb.jdbc.Driver
       username: root
       password: mari33#06adb
@@ -30,12 +30,7 @@ spring:
 
 org:
   example:
-    plugin:
-      path:
-        tmp: "E:/data/liveload-test/tmp"
-        target: "E:/data/liveload-test"
-        deleted: "E:/data/liveload-test/deleted"
-    package: org.example.proccesser
+    package: org.example.proccessor
 springdoc:
   swagger-ui:
     enabled: true

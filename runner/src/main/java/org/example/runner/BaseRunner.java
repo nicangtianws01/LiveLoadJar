@@ -3,7 +3,6 @@ package org.example.runner;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.example.cache.ProccessorCache;
 import org.example.common.Proccessor;
 import org.example.common.ProccessorDef;
 import org.example.common.TaskDef;
@@ -28,14 +27,15 @@ import java.util.Map;
 @Component
 public class BaseRunner implements Runner {
 
-    @Value("${org.example.package}")
-    private String basePackage;
+    private final List<Proccessor> proccessors;
+
+    public BaseRunner(List<Proccessor> proccessors) {
+        this.proccessors = proccessors;
+    }
 
     @Override
     public void run(String config) {
         try {
-            // 输出插件个数
-            Map<String, Proccessor> proccessors = ProccessorCache.getProccessors();
             log.info("Plugin number: {}", proccessors.size());
 
             ObjectMapper objectMapper = ObjectMapperUtil.getObjectMapper();
@@ -56,10 +56,15 @@ public class BaseRunner implements Runner {
             // 执行任务
             List<ProccessorDef> steps = taskDef.getSteps();
             for (ProccessorDef def : steps) {
-                Proccessor proccessor = proccessors.get(def.getName());
-                if (proccessor != null && proccessor.canProccess(def)) {
-                    proccessor.run(def);
-                } else {
+                boolean flag = false;
+                for (Proccessor proccessor : proccessors) {
+                    if (proccessor.canProccess(def)) {
+                        proccessor.run(def);
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag) {
                     throw new RuntimeException("匹配不到对应的执行器!");
                 }
             }

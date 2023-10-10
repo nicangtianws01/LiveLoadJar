@@ -20,7 +20,7 @@ import java.util.Objects;
 @EnableTransactionManagement
 @EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactoryPrimary",
         transactionManagerRef = "transactionManagerPrimary",
-        basePackages = {"org.example.repository.plugin", "org.example.repository.task"})
+        basePackages = {"org.example.repository.task"})
 public class PrimaryDataSourceConfig {
 
     @Resource(name = "primaryDataSource")

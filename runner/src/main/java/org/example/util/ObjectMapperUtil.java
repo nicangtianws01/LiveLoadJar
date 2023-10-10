@@ -2,11 +2,10 @@ package org.example.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
-import org.example.cache.ProccessorDefCache;
 import org.example.common.anno.JsonTypeDef;
 
 import java.lang.reflect.Modifier;
-import java.util.List;
+import java.util.Set;
 
 public class ObjectMapperUtil {
     private ObjectMapperUtil(){
@@ -15,19 +14,8 @@ public class ObjectMapperUtil {
 
     private final static ObjectMapper objectMapper = new ObjectMapper();
 
-    public static void init(){
+    public static void init(Set<Class<?>> classes){
         // 从插件load的类中查找def子类
-        List<Class<?>> classes = ProccessorDefCache.getProccesserDefs();
-        classes.stream().filter(clazz -> {
-            JsonTypeDef annotation = clazz.getAnnotation(JsonTypeDef.class);
-            return annotation != null && clazz.getSimpleName().endsWith("Def");
-        }).forEach(ObjectMapperUtil::omSubTypeSet);
-    }
-
-
-    public static void refresh(){
-        // 从插件load的类中查找def子类
-        List<Class<?>> classes = ProccessorDefCache.getProccesserDefs();
         classes.stream().filter(clazz -> {
             JsonTypeDef annotation = clazz.getAnnotation(JsonTypeDef.class);
             return annotation != null && clazz.getSimpleName().endsWith("Def");
