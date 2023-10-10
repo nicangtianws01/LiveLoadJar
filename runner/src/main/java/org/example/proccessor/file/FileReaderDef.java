@@ -1,4 +1,4 @@
-package org.example.proccesser.file;
+package org.example.proccessor.file;
 
 import lombok.Getter;
 import lombok.Setter;

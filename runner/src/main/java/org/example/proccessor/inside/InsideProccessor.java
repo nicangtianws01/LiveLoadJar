@@ -1,4 +1,4 @@
-package org.example.proccesser.inside;
+package org.example.proccessor.inside;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.common.Proccessor;
