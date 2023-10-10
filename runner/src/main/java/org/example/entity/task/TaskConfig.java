@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Entity
-@Table(name = "task_config")
+@Table(name = "TASK_CONFIG")
 public class TaskConfig implements Serializable {
     /**
      * id

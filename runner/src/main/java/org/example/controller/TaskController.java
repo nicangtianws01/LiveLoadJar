@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.example.entity.task.TaskConfig;
 import org.example.repository.task.TaskRepository;
 import org.example.runner.Runner;
@@ -36,6 +37,9 @@ public class TaskController {
     @GetMapping("/run/{name}")
     public String runTaskOfNameByThreadPool(@PathVariable String name) {
         TaskConfig taskConfig = taskRepository.findByName(name);
+        if(taskConfig == null || StringUtils.isBlank(taskConfig.getConfig())){
+            return "任务不存在!";
+        }
         executor.execute(() -> runner.run(taskConfig.getConfig()));
         return "任务执行完成!";
     }

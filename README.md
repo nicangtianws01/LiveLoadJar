@@ -6,8 +6,19 @@
 - jdk17
 
 ## 项目部署
+- 开发环境
 ```sh
 java -jar runner-1.0-SNAPSHOT.jar --spring.profiles.active=dev 
+```
+
+- 本地化环境
+```sh
+java -jar runner-1.0-SNAPSHOT.jar --spring.profiles.active=local 
+```
+
+- 生产环境
+```sh
+java -jar runner-1.0-SNAPSHOT.jar --spring.profiles.active=prod
 ```
 
 ## 代办

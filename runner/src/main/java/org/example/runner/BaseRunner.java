@@ -36,7 +36,7 @@ public class BaseRunner implements Runner {
     @Override
     public void run(String config) {
         try {
-            log.info("Plugin number: {}", proccessors.size());
+            log.info("Proccessor number: {}", proccessors.size());
 
             ObjectMapper objectMapper = ObjectMapperUtil.getObjectMapper();
 
@@ -56,16 +56,11 @@ public class BaseRunner implements Runner {
             // 执行任务
             List<ProccessorDef> steps = taskDef.getSteps();
             for (ProccessorDef def : steps) {
-                boolean flag = false;
                 for (Proccessor proccessor : proccessors) {
                     if (proccessor.canProccess(def)) {
                         proccessor.run(def);
-                        flag = true;
                         break;
                     }
-                }
-                if (!flag) {
-                    throw new RuntimeException("匹配不到对应的执行器!");
                 }
             }
         } catch (JsonProcessingException e) {
